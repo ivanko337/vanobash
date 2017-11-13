@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bash", "Bash\Bash.csproj", "{A094D510-8415-4620-BEE1-E2389C21A243}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A094D510-8415-4620-BEE1-E2389C21A243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A094D510-8415-4620-BEE1-E2389C21A243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A094D510-8415-4620-BEE1-E2389C21A243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A094D510-8415-4620-BEE1-E2389C21A243}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB7A884E-29AD-4284-A280-D365553C5B29}
+	EndGlobalSection
+EndGlobal

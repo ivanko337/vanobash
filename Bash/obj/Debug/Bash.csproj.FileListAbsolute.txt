@@ -1,0 +1,7 @@
+C:\Users\vano\source\repos\Bash\Bash\bin\Debug\Bash.exe.config
+C:\Users\vano\source\repos\Bash\Bash\bin\Debug\Bash.exe
+C:\Users\vano\source\repos\Bash\Bash\bin\Debug\Bash.pdb
+C:\Users\vano\source\repos\Bash\Bash\obj\Debug\Bash.csprojResolveAssemblyReference.cache
+C:\Users\vano\source\repos\Bash\Bash\obj\Debug\Bash.csproj.CoreCompileInputs.cache
+C:\Users\vano\source\repos\Bash\Bash\obj\Debug\Bash.exe
+C:\Users\vano\source\repos\Bash\Bash\obj\Debug\Bash.pdb
