@@ -14,8 +14,11 @@ namespace Bash
         /// Директория
         /// </summary>
         public static string Path { get; set; } = @"C:\Users\vano";
+        private static string HomeDirectory { get; set; } = @"C:\Users\vano";
 
         public static string UserName { get; set; } = "vano";
+
+        public static bool RootOrNotRoot { get; set; } = true;
 
         private const string CompName = "compOfVanoHacker";
 
@@ -39,6 +42,11 @@ namespace Bash
             }
         }
 
+        /// <summary>
+        /// ваще забыл чё это и чё он делает
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         static int GetNumb(string line)
         {
             int answer = 0;
@@ -90,7 +98,7 @@ namespace Bash
                         p[j] += line[i];
                     }
                 }
-                catch(IndexOutOfRangeException)
+                catch (IndexOutOfRangeException)
                 {
                     break;
                 }
@@ -106,9 +114,15 @@ namespace Bash
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(":");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("{0}", Path);
+            if (Path == HomeDirectory)
+                Console.Write("~");
+            else
+                Console.Write("{0}", Path);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{0} ", "#");
+            if (RootOrNotRoot)
+                Console.Write("{0} ", "#");
+            else
+                Console.Write("{0} ", "$");
         }
 
         static void Init()
@@ -118,6 +132,7 @@ namespace Bash
             commands.Add(new Clear());
             commands.Add(new Mkdir());
             commands.Add(new Touch());
+            commands.Add(new Cat());
         }
 
         static void Execute(string c, params string[] p)
@@ -131,7 +146,7 @@ namespace Bash
                     find = true;
                 }
             }
-            if(!find && c != "")
+            if (!find && c != "")
             {
                 Console.WriteLine("vanobash: {0}: command not found", c);
             }

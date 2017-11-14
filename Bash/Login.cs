@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
 
 namespace Bash
 {
@@ -14,12 +17,40 @@ namespace Bash
             string pass = GetPass();
             Console.WriteLine(pass);
 
+            string resultLognPass = login + ":" + pass;
+
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(resultLognPass));
+            byte[] hash = md5.Hash;
+            StringBuilder str = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                str.Append(hash[i].ToString("x2"));
+            }
+            Console.WriteLine(str.ToString());
+
             return answer;
+        }
+
+        static bool FindUser(string hash)
+        {
+            //меняйте под себя директорию, ибо пока что это костыль
+            using (StreamReader str = new StreamReader(@"C:\Users\vano\source\repos\Bash\Bash\login\pass.txt"))
+            {
+                string line = str.ReadLine();
+
+                while (line != null)
+                {
+                    if (line == hash)
+                        return true;
+                }
+
+                return false;
+            }
         }
 
         static string GetPass()
         {
-            //Console.Write("password: ");
             string pwd = "";
             while (true)
             {
@@ -40,7 +71,7 @@ namespace Bash
                 else
                 {
                     pwd += i.KeyChar;
-                    Console.Write("*");
+                    Console.Write("");
                 }
             }
             return pwd;

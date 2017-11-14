@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cat.cs" />
     <Compile Include="CD.cs" />
     <Compile Include="Clear.cs" />
     <Compile Include="Command.cs" />

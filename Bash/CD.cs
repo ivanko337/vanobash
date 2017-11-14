@@ -12,13 +12,11 @@ namespace Bash
             try
             {
                 if (Directory.Exists(p[0]))
-                {
                     Program.Path = p[0];
-                }
+                else if(p[0] == null)
+                    Program.Path = @"C:\Users\vano";
                 else
-                {
                     Console.WriteLine("vanobash: cd: No such directory.");
-                }
             }
             catch (IndexOutOfRangeException)
             {
