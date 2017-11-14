@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace по_схеме_Сержио
+namespace Bash
 {
     class Program
     {
@@ -21,6 +21,8 @@ namespace по_схеме_Сержио
 
         static void Main(string[] args)
         {
+            Login.LogIn();
+
             Init();
             string command = "";
 

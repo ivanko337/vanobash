@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace по_схеме_Сержио
+namespace Bash
 {
     sealed class Touch : Command
     {

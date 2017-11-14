@@ -46,6 +46,7 @@
     <Compile Include="Clear.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="IExecuteble.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="LS.cs" />
     <Compile Include="Mkdir.cs" />
     <Compile Include="NullPathException.cs" />

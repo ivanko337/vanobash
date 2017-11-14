@@ -1,4 +1,4 @@
-﻿namespace по_схеме_Сержио
+﻿namespace Bash
 {
     interface IExecutable
     {

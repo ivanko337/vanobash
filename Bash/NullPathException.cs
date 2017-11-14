@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace по_схеме_Сержио
+namespace Bash
 {
     class NullPathException : Exception
     {
