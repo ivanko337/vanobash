@@ -11,25 +11,18 @@ namespace по_схеме_Сержио
         {
             try
             {
-                if (p[0] != null)
+                if (Directory.Exists(p[0]))
                 {
-                    if (Directory.Exists(p[0]))
-                    {
-                        Program.Path = p[0];
-                    }
-                    else
-                    {
-                        Console.WriteLine("vanobash: cd: No such directory.");
-                    }
+                    Program.Path = p[0];
                 }
                 else
                 {
-                    Program.Path = @"C:\Users\vano";
+                    Console.WriteLine("vanobash: cd: No such directory.");
                 }
             }
-            catch(IndexOutOfRangeException)
+            catch (IndexOutOfRangeException)
             {
-                Console.WriteLine("vanobash: cd: missing operand.");
+                Program.Path = @"C:\Users\vano";
             }
         }
     }
