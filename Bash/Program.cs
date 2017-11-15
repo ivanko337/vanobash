@@ -24,8 +24,21 @@ namespace Bash
 
         static void Main(string[] args)
         {
-            Login.LogIn();
+            for (int i = 0; i < 3; i++)
+            {
+                bool a = Login.LogIn();
+                if (a)
+                {
+                    break;
+                }
+                if (!a && i == 2)
+                    return;
+            }
+            Execute();
+        }
 
+        static void Execute()
+        {
             Init();
             string command = "";
 
