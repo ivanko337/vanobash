@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Bash
 {
-    public class Login
+    class Login
     {
         public static bool LogIn()
         {
@@ -15,13 +15,25 @@ namespace Bash
             string login = Console.ReadLine();
             Console.Write("Password: ");
             string pass = GetPass();
-            Console.WriteLine(pass);
 
             string resultLognPass = login + ":" + pass;
-
             resultLognPass = GetHash(resultLognPass);
+
+            bool result = false;
+            for(int i = 0; i < 2; i++)
+            {
+                Console.Write("Password: ");
+                pass = GetPass();
+                resultLognPass = login + ":" + pass;
+                resultLognPass = GetHash(resultLognPass);
+                if (FindLine(resultLognPass))
+                {
+                    result = true;
+                    break;
+                }
+            }
             
-            return FindUser(resultLognPass);
+            return result;
         }
 
         /// <summary>
@@ -29,7 +41,7 @@ namespace Bash
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        static string GetHash(string line)
+        public static string GetHash(string line)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(line));
@@ -70,7 +82,7 @@ namespace Bash
             }
             else
             {
-                if(!FindUser(GetHash("guest:guest")))
+                if(!FindLine(GetHash("guest:guest")))
                 {
                     using (StreamWriter stw = new StreamWriter(@"D:\Program Files\Vanobash\pass.txt"))
                     { stw.WriteLine(GetHash("guest:guest")); }
@@ -85,10 +97,15 @@ namespace Bash
             }
             else
             {
+                if (!FindLine("guest"))
+                {
+                    using (StreamWriter stw = new StreamWriter(@"D:\Program Files\Vanobash\user.txt"))
+                    { stw.WriteLine(GetHash("guest")); }
+                }
             }
         }
 
-        static bool FindUser(string hash)
+        static bool FindLine(string hash)
         {
             //меняйте под себя директорию, ибо пока что это костыль
             using (StreamReader str = new StreamReader(@"D:\Program Files\Vanobash\pass.txt"))

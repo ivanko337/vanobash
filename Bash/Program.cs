@@ -24,17 +24,10 @@ namespace Bash
 
         static void Main(string[] args)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                bool a = Login.LogIn();
-                if (a)
-                {
-                    break;
-                }
-                if (!a && i == 2)
-                    return;
-            }
-            Execute();
+            if (!Login.LogIn())
+                return;
+            else
+                Execute();
         }
 
         static void Execute()
@@ -146,6 +139,7 @@ namespace Bash
             commands.Add(new Mkdir());
             commands.Add(new Touch());
             commands.Add(new Cat());
+            commands.Add(new UserAdd());
         }
 
         static void Execute(string c, params string[] p)
