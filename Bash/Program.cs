@@ -16,7 +16,7 @@ namespace Bash
         public static string Path { get; set; } = @"C:\Users\vano";
         private static string HomeDirectory { get; set; } = @"C:\Users\vano";
 
-        public static string UserName { get; set; } = "vano";
+        public static string UserName;
 
         public static bool RootOrNotRoot { get; set; } = true;
 
