@@ -10,7 +10,7 @@
         /// <summary>
         /// Возвращает массив параметров
         /// </summary>
-        /// <param name="line">Входная строка</param>
+        /// <param name="line">Входная строка из терминала</param>
         /// <param name="command">Название команды</param>
         /// <returns>Массив параметров</returns>
         public static string[] GetParams(string line, ref string command)
@@ -51,8 +51,7 @@
         private static string GetParameter(string line, ref int index)
         {
             string answer = "";
-
-
+            
             // Небольной костылик в том, что передаваемый индекс - индекс пробела, поэтому
             // в коде метода присутствует прибавление единицы к индексу перед началом работы, а
             // проверка на ноль делается, чтобы не съедать первый символ названия команды
@@ -63,12 +62,17 @@
             {
                 answer += line[index];
                 index++;
-                if (index == line.Length)
+                if (index == line.Length || line[index] == ' ')
                     break;
             }
 
             return answer;
         }
+        /// <summary>
+        /// Возвращает количество параметров в строке, не считая названия команды
+        /// </summary>
+        /// <param name="line">Входная строка из терминала</param>
+        /// <returns>Число параметров в строке не считая названия программы</returns>
         private static int GetParamsCount(string line)
         {
             int answer = 0;

@@ -12,9 +12,9 @@ namespace Bash
             try
             {
                 if (Directory.Exists(p[0]))
-                    Program.Path = p[0];
-                else if(p[0] == null)
-                    Program.Path = @"C:\Users\vano";
+                    ChangeDirectory(p[0]);
+                else if (p[0] == null)
+                    ChangeDirectory(@"C:\Users\vano");
                 else
                     Console.WriteLine("vanobash: cd: No such directory.");
             }
@@ -22,6 +22,17 @@ namespace Bash
             {
                 Program.Path = @"C:\Users\vano";
             }
+        }
+
+        public static void ChangeDirectory(string path)
+        {
+            Program.Path = path;
+            string temppath = "";
+            if (path == Program.HomeDirectory)
+                temppath = "~";
+            else
+                temppath = path;
+            Console.Title = @"vanobash - " + Program.UserName + "@" + Program.CompName + ": " + temppath;
         }
     }
 }
