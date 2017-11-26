@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Bash
 {
@@ -16,7 +17,7 @@ namespace Bash
         public static string Path { get; set; } = @"C:\Users\vano";
         private static string HomeDirectory { get; set; } = @"C:\Users\vano";
 
-        public static string UserName;
+        public static string UserName { get; set; }
 
         public static bool RootOrNotRoot { get; set; } = true;
 
@@ -125,10 +126,27 @@ namespace Bash
             else
                 Console.Write("{0}", Path);
             Console.ForegroundColor = ConsoleColor.White;
-            if (RootOrNotRoot)
+            if (IsUserRoot(UserName))
                 Console.Write("{0} ", "#");
             else
                 Console.Write("{0} ", "$");
+        }
+
+        static bool IsUserRoot(string username)
+        {
+            using (StreamReader sr = new StreamReader(@"D:\Program Files\Vanobash\login\rootusers.txt"))
+            {
+                string line = sr.ReadLine();
+                string hashUserName = Login.GetHash(username);
+
+                while (line != null)
+                {
+                    if (line == hashUserName)
+                        return true;
+                    line = sr.ReadLine();
+                }
+            }
+            return false;
         }
 
         static void Init()
