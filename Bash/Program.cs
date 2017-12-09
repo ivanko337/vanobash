@@ -16,6 +16,7 @@ namespace Bash
         /// Текущая директория
         /// </summary>
         public static string Path { get; set; } = @"C:\Users\vano";
+        public static string OldPath { get; set; } = "";
 
         /// <summary>
         /// Домашняя директория пользователя
@@ -110,6 +111,7 @@ namespace Bash
             commands.Add(new Touch());
             commands.Add(new Cat());
             commands.Add(new UserAdd());
+            commands.Add(new CP());
         }
 
         static void Execute(string c, params string[] p)

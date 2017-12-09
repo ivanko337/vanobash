@@ -76,6 +76,11 @@ namespace Bash
             }
         }
 
+        /// <summary>
+        /// Если отсутсвуют файл с паролями и/или файл с пользователями группы root, то этот метод их создаст
+        /// и заполнит дефолтными значениями(для файла user - ничего, для файла pass -  guest:guest)
+        /// Если файлы существуют, но в них нет стандартных значений, то он их добавит.
+        /// </summary>
         static void CreateFiles()
         {
             if (!File.Exists(@"D:\Program Files\Vanobash\login\pass.txt"))
@@ -109,6 +114,7 @@ namespace Bash
                 }
             }
         }
+
 
         static bool FindLine(string hash)
         {

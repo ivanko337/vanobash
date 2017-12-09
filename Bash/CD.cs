@@ -12,9 +12,22 @@ namespace Bash
             try
             {
                 if (Directory.Exists(p[0]))
+                {
+                    Program.OldPath = Program.Path;
                     ChangeDirectory(p[0]);
+                }
                 else if (p[0] == null)
+                {
+                    Program.OldPath = Program.Path;
                     ChangeDirectory(@"C:\Users\vano");
+                }
+                // Это костыль! Не трогать. Никак иначе не работает
+                else if (p[0] == "-")
+                {
+                    string tempOldDir = Program.Path;
+                    ChangeDirectory(Program.OldPath);
+                    Program.OldPath = tempOldDir;
+                }
                 else
                     Console.WriteLine("vanobash: cd: No such directory.");
             }

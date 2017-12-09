@@ -1,9 +1,10 @@
-﻿namespace Bash
+﻿using System.IO;
+
+namespace Bash
 {
     /// <summary>
     /// ОСТОРОЖНО
     /// КЛАСС СОСТОИТ ИЗ ДИЧАЙШИХ КОСТЫЛЕЙ
-    /// ПРИ ИСПОЛЬЗОВАНИИ СОБЛЮДАТЬ ВСЕ ПРАВИЛА
     /// </summary>
     static class ServiceClass
     {
@@ -81,6 +82,46 @@
                 if (line[i] == ' ' && i != line.Length)
                     answer++;
             }
+            return answer;
+        }
+
+        /// <summary>
+        /// Проверяет, существует ли файл в директории.
+        /// </summary>
+        /// <param name="path">Директория для проверки</param>
+        /// <param name="fileName">Имя файла</param>
+        /// <returns>Возвращает true если файл присутствует в директории
+        /// и false если файл отсутсвует.</returns>
+        public static bool FileExistInDir(string path, string fileName)
+        {
+            DirectoryInfo dir = new DirectoryInfo(path);
+            foreach(var item in dir.GetFiles())
+            {
+                if (fileName.Equals(item.Name))
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// При передаче полного пути к файлу возвращает строку без имени файла
+        /// </summary>
+        /// <param name="path">Полный путь к файлу</param>
+        /// <returns>Вернёт директорию, в которой находится файл</returns>
+        public static string GetOnlyDirectory(string path)
+        {
+            int temp = 0;
+            for (int i = path.Length - 1; i > 0; i--)
+            {
+                if (!(path[i] != '\\') || !(path[i] != '/'))
+                    break;
+                temp++;
+            }
+
+            string answer = "";
+            for (int i = 0; i < path.Length - temp; i++)
+                answer += path[i];
+
             return answer;
         }
     }

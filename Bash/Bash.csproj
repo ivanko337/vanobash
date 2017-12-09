@@ -46,6 +46,7 @@
     <Compile Include="CD.cs" />
     <Compile Include="Clear.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CP.cs" />
     <Compile Include="IExecuteble.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LS.cs" />
