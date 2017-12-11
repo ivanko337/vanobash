@@ -66,6 +66,9 @@ namespace Bash
             }
         }
 
+        /// <summary>
+        /// Выводит начало строки(имя пользователя, имя компьютера, текущую директорию и знак, означающий пользователь группы root или нет)
+        /// </summary>
         static void PrintInfo()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -82,9 +85,16 @@ namespace Bash
                 Console.Write("{0} ", "#");
             else
                 Console.Write("{0} ", "$");
-            CD.ChangeDirectory(Path);
+            Console.Title = @"vanobash - " + Program.UserName + "@" + Program.CompName + ": " + Path;
         }
 
+        /// <summary>
+        /// Ищет имя пользователя в файле с root-пользователями и если пользователь группы root, то будут предоставлены
+        /// права суперпользователя и выведена #.
+        /// </summary>
+        /// <param name="username">Имя пользователя</param>
+        /// <returns>Вернёт true если пользователь относитеся к группе root, и false
+        /// если пользователь не является членом группы root</returns>
         static bool IsUserRoot(string username)
         {
             using (StreamReader sr = new StreamReader(@"D:\Program Files\Vanobash\login\rootusers.txt"))
@@ -102,6 +112,9 @@ namespace Bash
             return false;
         }
 
+        /// <summary>
+        /// Инициализирует элементы листа с командамии экземплярами классов команд.
+        /// </summary>
         static void Init()
         {
             commands.Add(new CD());
@@ -112,8 +125,15 @@ namespace Bash
             commands.Add(new Cat());
             commands.Add(new UserAdd());
             commands.Add(new CP());
+            commands.Add(new Rm());
         }
 
+        /// <summary>
+        /// Выполняет поиск нужного экземпляра в листе и вызывается переопределённый в каждом экземпляре 
+        /// метод Execute.
+        /// </summary>
+        /// <param name="c">Команда</param>
+        /// <param name="p">Массив параметров</param>
         static void Execute(string c, params string[] p)
         {
             bool find = false;

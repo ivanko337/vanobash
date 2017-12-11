@@ -54,6 +54,7 @@
     <Compile Include="NullPathException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rm.cs" />
     <Compile Include="ServiceClass.cs" />
     <Compile Include="Touch.cs" />
     <Compile Include="UserAdd.cs" />
