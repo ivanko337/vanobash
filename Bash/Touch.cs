@@ -18,14 +18,19 @@ namespace Bash
                 }
                 else
                 {
-                    string filePath = Program.Path + "\\" + p[0];
-                    File.Create(filePath);
+                    File.Create(Program.Path + "\\" + p[0]);
                 }
             }
-            catch (Exception ex) //IndexOutOfRange
+            catch (IndexOutOfRangeException) 
             {
-                //Console.WriteLine("vanobash: touch: missing operand.");
-                Console.WriteLine(ex.Message);
+                try
+                {
+                    File.Create(Program.Path + "Unnamed.txt");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }

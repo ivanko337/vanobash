@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace Bash
 {
@@ -123,6 +124,23 @@ namespace Bash
                 answer += path[i];
 
             return answer;
+        }
+
+        /// <summary>
+        /// Возвращает имя файла из пути.
+        /// </summary>
+        /// <param name="path">Полный путь к файлу.</param>
+        /// <returns></returns>
+        public static string GetFileName(string path)
+        {
+            int index = path.Length - 1;
+            for(int i = path.Length - 1; i > 0; i--)
+            {
+                if (path[i] == '/' || path[i] == '\\')
+                    break;
+                index--;
+            }
+            return path.Substring(index);
         }
     }
 }

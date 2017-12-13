@@ -126,6 +126,8 @@ namespace Bash
             commands.Add(new UserAdd());
             commands.Add(new CP());
             commands.Add(new Rm());
+            commands.Add(new Pwd());
+            commands.Add(new Wget());
         }
 
         /// <summary>
