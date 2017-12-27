@@ -2,7 +2,7 @@
 
 namespace Bash
 {
-    class Command : IExecutable
+    abstract class Command : IExecutable
     {
         public virtual string ProgramName { get; } = "Command";
 
