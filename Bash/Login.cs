@@ -42,7 +42,7 @@ namespace Bash
         }
 
         /// <summary>
-        /// Возвращает hash, зашифрованный по алгоритму md5
+        /// Возвращает хэш, зашифрованный по алгоритму md5
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
@@ -65,13 +65,13 @@ namespace Bash
         /// </summary>
         static void ExistFilesAndDirictoryes()
         {
-            if (Directory.Exists(@"D:\Program Files\Vanobash\login"))
+            if (Directory.Exists(@"E:\Program Files\Vanobash\login"))
             {
                 CreateFiles();
             }
             else
             {
-                Directory.CreateDirectory(@"D:\Program Files\Vanobash\login");
+                Directory.CreateDirectory(@"E:\Program Files\Vanobash\login");
                 CreateFiles();
             }
         }
@@ -83,43 +83,42 @@ namespace Bash
         /// </summary>
         static void CreateFiles()
         {
-            if (!File.Exists(@"D:\Program Files\Vanobash\login\pass.txt"))
+            if (!File.Exists(@"E:\Program Files\Vanobash\login\pass.txt"))
             {
-                using (File.Create(@"D:\Program Files\Vanobash\login\pass.txt"))
+                using (File.Create(@"E:\Program Files\Vanobash\login\pass.txt"))
                 { }
-                using (StreamWriter stw = new StreamWriter(@"D:\Program Files\Vanobash\login\pass.txt"))
+                using (StreamWriter stw = new StreamWriter(@"E:\Program Files\Vanobash\login\pass.txt"))
                 { stw.WriteLine(GetHash("guest:guest")); }
             }
             else
             {
                 if(!FindLine(GetHash("guest:guest")))
                 {
-                    using (StreamWriter stw = new StreamWriter(@"D:\Program Files\Vanobash\login\pass.txt"))
+                    using (StreamWriter stw = new StreamWriter(@"E:\Program Files\Vanobash\login\pass.txt"))
                     { stw.WriteLine(GetHash("guest:guest")); }
                 }
             }
-            if (!File.Exists(@"D:\Program Files\Vanobash\user.txt"))
+            if (!File.Exists(@"E:\Program Files\Vanobash\user.txt"))
             {
-                using (File.Create(@"D:\Program Files\Vanobash\user.txt"))
+                using (File.Create(@"E:\Program Files\Vanobash\user.txt"))
                 { }
-                using (StreamWriter stw = new StreamWriter(@"D:\Program Files\Vanobash\user.txt"))
+                using (StreamWriter stw = new StreamWriter(@"E:\Program Files\Vanobash\user.txt"))
                 { stw.WriteLine("guest"); }
             }
             else
             {
                 if (!FindLine("guest"))
                 {
-                    using (StreamWriter stw = new StreamWriter(@"D:\Program Files\Vanobash\user.txt"))
+                    using (StreamWriter stw = new StreamWriter(@"E:\Program Files\Vanobash\user.txt"))
                     { stw.WriteLine(GetHash("guest")); }
                 }
             }
         }
 
-
         static bool FindLine(string hash)
         {
             //меняйте под себя директорию, ибо пока что это костыль
-            using (StreamReader str = new StreamReader(@"D:\Program Files\Vanobash\login\pass.txt"))
+            using (StreamReader str = new StreamReader(@"E:\Program Files\Vanobash\login\pass.txt"))
             {
                 string line = str.ReadLine();
 
@@ -150,7 +149,7 @@ namespace Bash
                     if (pwd.Length != 0)
                     {
                         pwd = pwd.Remove(pwd.Length - 1);
-                        Console.Write("\b \b");
+                        //Console.Write("\b \b");
                     }
                 }
                 else

@@ -12,8 +12,10 @@ namespace Bash
         {
             DirectoryInfo dir = new DirectoryInfo(Program.Path);
             List<string> list = new List<string>();
+
             foreach (var item in dir.GetFiles())
                 list.Add('f' + item.Name);
+
             foreach (var item in dir.GetDirectories())
                 list.Add('d' + item.Name);
             list.Sort();

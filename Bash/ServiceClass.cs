@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 
 namespace Bash
 {
@@ -19,6 +18,7 @@ namespace Bash
         {
             // Определить количество параметров в строке
             int paramsCount = GetParamsCount(line);
+
             // Массив с параметрами
             string[] parameters = new string[paramsCount];
 
@@ -28,6 +28,11 @@ namespace Bash
             for (int i = 0; i < paramsCount; i++)
             {
                 parameters[i] = GetParameter(line, ref index);
+            }
+            if (parameters.Length != 0)
+            {
+                if (parameters[parameters.Length - 1] == "" || parameters[parameters.Length - 1] == " ")
+                    parameters[parameters.Length - 1] = null;
             }
 
             return parameters;
@@ -80,7 +85,7 @@ namespace Bash
             int answer = 0;
             for (int i = 0; i < line.Length; i++)
             {
-                if (line[i] == ' ' && i != line.Length)
+                if (line[i] == ' ' && line[i - 1] != '^' && i != line.Length)
                     answer++;
             }
             return answer;

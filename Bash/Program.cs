@@ -6,7 +6,7 @@ namespace Bash
 {
     class Program
     {
-        #region Данные
+        #region Data
         /// <summary>
         /// Список существующих команд
         /// </summary>
@@ -15,13 +15,13 @@ namespace Bash
         /// <summary>
         /// Текущая директория
         /// </summary>
-        public static string Path { get; set; } = @"C:\Users\vano";
+        public static string Path { get; set; } = @"C:\Users\vgrit";
         public static string OldPath { get; set; } = "";
 
         /// <summary>
         /// Домашняя директория пользователя
         /// </summary>
-        public static string HomeDirectory { get; set; } = @"C:\Users\vano";
+        public static string HomeDirectory { get; set; } = @"C:\Users\vgrit";
 
         /// <summary>
         /// Имя пользователя
@@ -50,6 +50,10 @@ namespace Bash
         static void Execute()
         {
             Init();
+
+            Console.WriteLine("СПРАВКА\n\tЕсли в пути к файлу или директории содержится пробел,\n\t" +
+                "то перед этим пробелом поставьте ^, чтобы система поняла что это полный путь.\n" +
+                "\tПример: C:\\Program^ Files");
             
             // Входная строка
             string command = "";
@@ -97,7 +101,7 @@ namespace Bash
         /// если пользователь не является членом группы root</returns>
         static bool IsUserRoot(string username)
         {
-            using (StreamReader sr = new StreamReader(@"D:\Program Files\Vanobash\login\rootusers.txt"))
+            using (StreamReader sr = new StreamReader(@"E:\Program Files\Vanobash\login\rootusers.txt"))
             {
                 string line = sr.ReadLine();
                 string hashUserName = Login.GetHash(username);
